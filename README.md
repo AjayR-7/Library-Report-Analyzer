@@ -22,6 +22,9 @@ cd library-visit-analysis
 Now that you're inside the project directory and your virtual environment is activated, install all required dependencies:
 ```
 pip install -r requirements.txt
+pip install flask     
+pip install flask==2.2.3 werkzeug==2.2.3
+pip install openpyxl
 ```
 This will install all the libraries necessary to run the project, including Flask, matplotlib, pandas, and others.
 
