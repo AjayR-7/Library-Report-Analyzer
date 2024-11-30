@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruas Library Analyser</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f8fb;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 100px; 
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-control {
+            border-radius: 10px;
+        }
+        .btn-block {
+            background-color: #303132;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto; 
+            width: 200px; 
+        }
+
+        .btn-block:hover {
+            background-color: #2b2c2b;
+            justify-content: center;
+        }
+        h1 {
+            color: #333;
+            font-weight: bold;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            padding: 40px;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .library-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .footer p {
+            margin-bottom: 0;
+        }
+
+        .dropzone {
+            border: 2px dashed rgb(62, 61, 61);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .dropzone:hover {
+            background-color: #f8f9fa;
+        }
+        .dropzone input {
+            display: none;
+        }
+        .dropzone p {
+            font-size: 16px;
+            color: #3b3c3d;
+        }
+
+        .disclaimer {
+            position: fixed;
+            bottom: 70px; 
+            right: 20px;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            font-size: 10px;
+        }
+        .disclaimer p {
+            margin-bottom: 0;
+        }
+        .disclaimer a {
+            color: #3b3c3d;
+            text-decoration: none;
+        }
+        .disclaimer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Card Container -->
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h1 class="text-center">Upload Library Visit Data</h1>
+                
+
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file">Select Excel File (.xlsx):</label>
+                        <div class="dropzone" id="dropzone">
+                            <p>Drag & Drop your file here, or <span class="text-primary">Browse</span></p>
+                            <input type="file" name="file" id="file" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer (Fixed position above footer) -->
+    <div class="disclaimer">
+        <p>Disclaimer: <br> Please upload a file with the extension <strong>.xlsx</strong> only. <br> The file should contain the following headers: <strong>E_Date, Member ID, M_Name, In_Time, Out_Time</strong>.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 RUAS Library. All rights reserved. <br> <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // Drag and Drop functionality for file upload
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('file');
+
+        dropzone.addEventListener('click', () => fileInput.click());
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.style.backgroundColor = '#f1f1f1';
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.style.backgroundColor = '';
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                dropzone.querySelector('p').textContent = `File selected: ${files[0].name}`;
+            }
+        });
+    </script>
+</body>
+</html>

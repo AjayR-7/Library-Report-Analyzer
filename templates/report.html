@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruas Library Analyser - Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f8fb;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 100px;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+        }
+        .header img {
+            height: 50px;  
+            width: auto;  
+        }
+        h1 {
+            color:white;
+            font-weight: bold;
+            font-size: 2rem;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .chart-section {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .chart-section h3 {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .row img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        .chart-img {
+            width: 90%;
+            height: 350px; 
+            object-fit: contain; 
+            border-radius: 10px;
+        }
+        .row {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+        }
+
+        .download-links {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .download-links h4 {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .download-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .download-links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .download-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Header with Logo and Title -->
+        <div class="header">
+            <!-- Placeholder for College Logo -->
+            <img src="/static/images/M_S.PNG" alt="Logo" />
+            <!-- Title -->
+            <h1>Library Visit Analysis Report</h1>
+        </div>
+
+        <!-- Visit Duration Categories Chart -->
+        <div class="chart-section">
+            <h3>Visit Duration Categories</h3>
+            <img class="chart-img" src="{{ url_for('static', filename='duration_categories.png') }}" alt="Visit Duration Categories">
+        </div>
+
+        <!-- New vs Returning Visitors Chart -->
+        <div class="chart-section">
+            <h3>New vs Returning Visitors</h3>
+            <img class="chart-img" src="{{ url_for('static', filename='new_vs_returning_visitors.png') }}" alt="New vs Returning Visitors">
+        </div>
+
+        <!-- Seasonal Trends Chart -->
+        <div class="chart-section">
+            <h3>Library Visits by Season</h3>
+            <img class="chart-img" src="{{ url_for('static', filename='seasonal_trends.png') }}" alt="Library Visits by Season">
+        </div>
+
+        <!-- Weekday Visit Analysis Chart -->
+        <div class="chart-section">
+            <h3>Library Visits by Weekday</h3>
+            <img class="chart-img" src="{{ url_for('static', filename='weekday_visits.png') }}" alt="Library Visits by Weekday">
+        </div>
+
+        <!-- Visit Prediction Chart -->
+        <div class="chart-section">
+            <h3>Visit Prediction using Linear Regression</h3>
+            <img class="chart-img" src="{{ url_for('static', filename='visit_prediction.png') }}" alt="Visit Prediction">
+        </div>
+
+        <!-- Student Visit Frequency Clusters Chart -->
+        <div class="chart-section">
+            <h3>Student Visit Frequency Clusters</h3>
+            <img class="chart-img" src="{{ url_for('static', filename='student_visit_clusters.png') }}" alt="Student Visit Frequency Clusters">
+        </div>
+
+        <!-- Monthly Visit Trends -->
+        <div class="chart-section">
+            <h3>Monthly Library Visits (Yearly Analysis)</h3>
+            <img class="chart-img" src="{{ url_for('static', filename='monthly_visits.png') }}" alt="Monthly Library Visits">
+        </div>
+
+        <!-- Most Frequent Month Visited -->
+        <div class="chart-section">
+            <h3>Most Frequent Month Visited</h3>
+            <img class="chart-img" src="{{ url_for('static', filename='most_frequent_month.png') }}" alt="Most Frequent Month Visited">
+        </div>
+
+        <!-- Download Links -->
+        <div class="download-links">
+            <h4>Download Plots</h4>
+            <ul>
+                <li><a href="{{ url_for('download', filename='duration_categories.png') }}">Download Visit Duration Categories</a></li>
+                <li><a href="{{ url_for('download', filename='new_vs_returning_visitors.png') }}">Download New vs Returning Visitors</a></li>
+                <li><a href="{{ url_for('download', filename='seasonal_trends.png') }}">Download Seasonal Trends</a></li>
+                <li><a href="{{ url_for('download', filename='weekday_visits.png') }}">Download Weekday Visits</a></li>
+                <li><a href="{{ url_for('download', filename='visit_prediction.png') }}">Download Visit Prediction</a></li>
+                <li><a href="{{ url_for('download', filename='student_visit_clusters.png') }}">Download Student Visit Clusters</a></li>
+                <li><a href="{{ url_for('download', filename='monthly_visits.png') }}">Download Monthly Visits</a></li>
+                <li><a href="{{ url_for('download', filename='most_frequent_month.png') }}">Download Most Frequent Month</a></li>
+            </ul>
+        </div>
+
+        <!-- Download the report as PDF
+        <div class="text-center">
+            <h2>Download the report as PDF</h2>
+            <a href="/download_pdf" target="_blank" class="btn btn-primary">Download Report as PDF</a>
+        </div> -->
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 RUAS Library. All rights reserved. <br> <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
